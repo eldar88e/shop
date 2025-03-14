@@ -1,0 +1,20 @@
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'spec/**/*'
+    - 'bin/*'
+
+Style/Documentation:
+  Enabled: false
+
+# Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
