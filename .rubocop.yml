@@ -6,7 +6,6 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'db/**/*'
-    - 'spec/**/*'
     - 'bin/*'
 
 Style/Documentation:

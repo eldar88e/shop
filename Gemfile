@@ -7,6 +7,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
+gem "vite_rails"
+gem "pg"
 
 # gem "bcrypt", "~> 3.1.7"
 # gem "tzinfo-data", platforms: %i[ windows jruby ]
