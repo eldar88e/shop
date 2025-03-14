@@ -49,4 +49,4 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
-.idea
+/.idea
