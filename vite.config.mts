@@ -1,10 +1,20 @@
-import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import ViteRails from "vite-plugin-rails";
+import tailwindcss from '@tailwindcss/vite';
 import autoprefixer from "autoprefixer";
 
 export default defineConfig({
-    plugins: [RubyPlugin(), tailwindcss()],
+    plugins: [
+        tailwindcss(),
+        ViteRails({
+            envVars: { RAILS_ENV: "development" },
+            envOptions: { defineOn: "import.meta.env" },
+            fullReload: {
+                additionalPaths: ["config/routes.rb", "app/views/**/*"],
+                delay: 300,
+            },
+        }),
+    ],
     css: {
         preprocessorOptions: {
             scss: {
@@ -12,25 +22,22 @@ export default defineConfig({
             },
         },
         postcss: {
-            plugins: [autoprefixer()],
+            plugins: [
+                autoprefixer(),
+            ],
         },
     },
     build: {
-        outDir: 'public/vite',
-        assetsDir: '',
-        rollupOptions: {
-            input: {
-                application: './app/frontend/entrypoints/application.js',
-            },
-        },
-        chunkSizeWarningLimit: 800,
         sourcemap: false,
     },
-    appType: 'custom',
     server: {
         host: 'localhost',
         port: 3036,
         strictPort: true,
         open: true,
+        hmr: {
+            host: 'localhost',
+            port: 3036,
+        },
     },
 })

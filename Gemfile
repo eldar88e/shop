@@ -9,6 +9,8 @@ gem "jbuilder"
 gem "bootsnap", require: false
 gem "vite_rails"
 gem "pg"
+gem "dotenv"
+gem "slim-rails"
 
 # gem "bcrypt", "~> 3.1.7"
 # gem "tzinfo-data", platforms: %i[ windows jruby ]
