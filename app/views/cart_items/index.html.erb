@@ -1,0 +1,9 @@
+<% if @cart_items.present? %>
+  <ul>
+    <% @cart_items.each do |cart_item| %>
+      <li><%= cart_item.product.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>Ваша корзина пуста!</h1>
+<% end %>
