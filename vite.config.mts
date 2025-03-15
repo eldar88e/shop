@@ -4,40 +4,16 @@ import tailwindcss from '@tailwindcss/vite';
 import autoprefixer from "autoprefixer";
 
 export default defineConfig({
-    plugins: [
-        tailwindcss(),
-        ViteRails({
-            envVars: { RAILS_ENV: "development" },
-            envOptions: { defineOn: "import.meta.env" },
-            fullReload: {
-                additionalPaths: ["config/routes.rb", "app/views/**/*"],
-                delay: 300,
-            },
-        }),
-    ],
+    plugins: [tailwindcss(), ViteRails()],
     css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern-compiler',
-            },
-        },
-        postcss: {
-            plugins: [
-                autoprefixer(),
-            ],
-        },
+        preprocessorOptions: { scss: { api: 'modern-compiler' } },
+        postcss: { plugins: [autoprefixer()] },
     },
-    build: {
-        sourcemap: false,
-    },
+    build: { sourcemap: false },
     server: {
         host: 'localhost',
         port: 3036,
         strictPort: true,
         open: true,
-        hmr: {
-            host: 'localhost',
-            port: 3036,
-        },
     },
 })
