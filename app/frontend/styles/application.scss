@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+body {
+  @apply font-sans;
+  font-family: "Open Sans";
+
+  .header {
+    border-bottom: 1px solid rgba(236, 239, 244, 1);
+  }
+}
