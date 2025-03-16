@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   private
 
   def current_cart
+    @current_cart ||= find_cart
+  end
+
+  def find_cart
     return create_new_cart if session[:cart_id].blank?
 
     Cart.find_by(user_id: session[:session_id], status: :initialized) || create_new_cart

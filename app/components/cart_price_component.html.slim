@@ -1,0 +1,24 @@
+.border.border-gray-100.rounded-lg.p-4.mb-8 data-controller="discount"
+  .flex.items-center.justify-between.text-gray-600.mb-1
+    .text-xs.leading-tight.flex.justify-center.gap-1
+      = @cart_items.sum(&:quantity)
+      span товара на сумму
+    .flex.gap-1.text-base.font-semibold.leading-6.text-black
+      div data-discount-target="totalPrice" = @cart.total_price
+      span style="font-family: system-ui;" ₽
+  - unless @discount.zero?
+    .flex.justify-between.items-center.mb-3.text-gray-600
+      .text-xs.leading-tight Передвигая слайдер, укажите сумму скидки
+      .text-teal-400.text-base.leading-6
+        span.me-1 data-discount-target="discountPrice" = @discount
+        span style="font-family: system-ui;" ₽
+    .pb-3.mb-3.border-b.border-gray-100 style="height: 50px; padding-top: 5px;"
+      input type="range" min="0" max="#{@discount}" value="#{@discount}" data-action="input->discount#updateDiscount" data-discount-target="rangeInput"
+  - else
+    p.text-gray-300.pb-3 У вас не осталось скидки
+  .flex.justify-between.text-gray-900
+    span.text-base.font-semibold.leading-6 сумма заказа
+    .flex.gap-1.text-xl.font-bold.leading-8
+      span data-discount-target="finalPrice" = @cart.total_price - @discount
+      div style="font-family: system-ui;" ₽
+= button_to 'Оформить', cart_path(@cart), params: { discount: @discount }, method: :patch, class: 'btn w-full'

@@ -7,10 +7,7 @@ li id=dom_id(cart_item)
         .text-sm.leading-5.max-w-48.sm:max-w-72
           = cart_item.product.name
       .w-full.sm:w-1/2.flex.justify-between.items-end.sm:items-center
-        .p-1.flex.items-center.bg-gray-100.rounded-md
-          = button_to '-', cart_item_path(cart_item.product), method: :patch, params: { quantity: :down }, class: 'w-6 h-6 flex items-center justify-center active:bg-gray-300 rounded'
-          .w-6.h-6.flex.items-center.justify-center.font-bold.text-base.leading-6 = cart_item.quantity
-          = button_to '+', cart_item_path(cart_item.product), method: :patch, params: { quantity: :up }, class: 'w-6 h-6 flex items-center justify-center active:bg-gray-300 rounded'
+        div id="count_block_#{cart_item.id}" = render CountCartItemComponent.new(cart_item)
         .flex.gap-1.font-semibold.text-base.leading-6
           = cart_item.product.price
           div style="font-family: system-ui;" ₽
