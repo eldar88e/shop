@@ -62,4 +62,9 @@ body {
     width: 38px;
     @apply bg-teal-500 rounded-full shadow-md cursor-pointer;
   }
+
+  input[type="range"] {
+    width: 100%;
+    @apply border border-teal-400 bg-teal-500 h-1;
+  }
 }

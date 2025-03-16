@@ -8,6 +8,8 @@ services:
       - .:/app
     container_name: shop
     hostname: shop
+    ports:
+      - "3000:3000"
     depends_on:
       - pg
       - redis

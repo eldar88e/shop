@@ -15,13 +15,10 @@ test:
   database: shop_test
 
 production:
-  <<: *default
-  database: shop_production
-
-  cable:
-    adapter: postgresql
-    database: shop_production_cable
-    host: <%= ENV.fetch('DB_HOST', 'localhost') %>
-    username: <%= ENV.fetch('DB_USER', 'admin') %>
-    password: <%= ENV.fetch('DB_PASSWORD', 'admin') %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  primary: &primary_production
+    <<: *default
+    database: shop_production
+  cache:
+    <<: *primary_production
+    database: shop_production_cache
+    migrations_paths: db/cache_migrate
