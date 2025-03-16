@@ -1,0 +1,44 @@
+- content_for(:title, 'Корзина')
+
+.flex.justify-between.items-center.mb-8
+  h1.font-semibold.text-2xl.leading-10.tracking-norma = content_for(:title)
+  - if @cart_items.present?
+    = button_to 'Очистить корзину', cart_path(@cart_items.first.cart), method: :delete, class: 'font-normal text-sm leading-5 text-gray-400 empty-cart'
+
+- if @cart_items.present?
+  ul.mb-8 = render @cart_items
+  .border.border-gray-100.rounded-lg.p-4.mb-8
+    .flex.justify-between.text-gray-600.mb-1
+      .text-xs.leading-tight.flex.justify-center.gap-1
+        = current_cart.cart_items.sum(&:quantity)
+        span товара на сумму
+      flex.text-base.font-semibold.leading-6
+        = current_cart.total_price
+    .flex.justify-between.mb-3.text-gray-600
+      .text-xs.leading-tight Передвигая слайдер, укажите сумму скидки
+      .text-teal-400.text-base.leading-6
+        span.me-1 id="discount-value" = discount
+        span style="font-family: system-ui;" ₽
+    .pb-3.mb-3.border-b.border-gray-100 style="height: 50px; padding-top: 5px;"
+      input#discount-slider type="range" min="0" max="#{discount}" value="#{discount}" oninput="updateDiscount(this.value)"
+      script
+        | function updateDiscount(value) {
+        |   document.getElementById('discount-value').innerText = value;
+        |   let initialPrice = parseInt(document.getElementById('total-price').getAttribute('data-initial-price'));
+        |   let newPrice = initialPrice - value;
+        |   document.getElementById('total-price').innerText = newPrice;
+        |   document.querySelector('input[name="discount"]').value = value;
+        | }
+    .flex.justify-between.text-gray-900
+      span.text-base.font-semibold.leading-6 сумма заказа
+      .flex.gap-1.text-xl.font-bold.leading-8
+        span#total-price data-initial-price="#{current_cart.total_price}" = current_cart.total_price - discount
+        div style="font-family: system-ui;" ₽
+  = button_to 'Оформить', cart_path(@cart_items.first.cart), params: { discount: discount }, method: :patch, class: 'btn w-full'
+- else
+  .flex.justify-center
+    .my-20.text-center
+      .flex.justify-center
+        = image_tag vite_asset_path('images/empty.svg'), class: 'mb-6'
+      h2.font-semibold.text-xl.leading-8.mb-2 В корзине нет товаров
+      = link_to 'Добавьте товар из каталога.', root_path, class: 'text-sm leading-5 text-gray-500'

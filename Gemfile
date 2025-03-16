@@ -11,6 +11,7 @@ gem "vite_rails"
 gem "pg"
 gem "dotenv"
 gem "slim-rails"
+gem "rails-i18n"
 
 # gem "bcrypt", "~> 3.1.7"
 # gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -25,7 +26,7 @@ gem "slim-rails"
 gem "kamal", require: false
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "pry"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
 end

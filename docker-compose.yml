@@ -1,0 +1,52 @@
+services:
+  shop:
+    image: shop
+    build: .
+    env_file: ./.env
+    volumes:
+      - gems:/usr/local/bundle
+      - .:/app
+    container_name: shop
+    hostname: shop
+    depends_on:
+      - pg
+      - redis
+    command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
+    networks:
+      net:
+      proxy-net:
+        ipv4_address: 172.29.0.4
+    restart: always
+
+  pg:
+    image: postgres:16.1
+    container_name: shop-pg
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      TZ: Europe/Moscow
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - net
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4.2-alpine3.21
+    container_name: shop-redis
+    command: redis-server
+    networks:
+      - net
+    volumes:
+      - redis:/data
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  redis:
+  gems:
+
+networks:
+  net:
+  proxy-net:
+    external: true

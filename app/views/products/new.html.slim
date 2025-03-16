@@ -1,0 +1,7 @@
+- content_for(:title, 'Новый товар')
+
+.flex.justify-between.items-center.mb-8
+  h1.font-semibold.text-2xl.leading-10.tracking-norma = content_for(:title)
+
+= render 'form'
+= link_to 'Назад', products_path

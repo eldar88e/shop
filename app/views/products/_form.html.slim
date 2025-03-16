@@ -1,0 +1,19 @@
+= form_with(model: @product) do |f|
+  .mb-4
+    = f.label :name, class: "block text-sm font-medium text-gray-700"
+    = f.text_field :name, class: "mt-1 block w-full border-1 rounded-md border-teal-200 focus:border-teal-400 focus:ring-0 p-2 ring-0 focus-visible:ring-0 focus-visible:border-teal-400"
+
+  .mb-4
+    = f.label :price, class: "block text-sm font-medium text-gray-700"
+    = f.number_field :price, step: 10, min: 0, class: "mt-1 block w-full border-1 rounded-md border-teal-200 focus:border-teal-400 focus:ring-0 p-2 ring-0"
+
+  .mb-4
+    = f.label :stock_quantity, class: "block text-sm font-medium text-gray-700"
+    = f.number_field :stock_quantity, min: 0, class: "mt-1 block w-full border-1 rounded-md border-teal-200 focus:border-teal-400 focus:ring-0 p-2 ring-0"
+
+  .mb-4
+    = f.label :image, class: "block text-sm font-medium text-gray-700"
+    = f.file_field :image, class: "mt-1 block w-full border-1 rounded-md border-teal-200 focus:border-teal-400 focus:ring-0 p-2 ring-0"
+
+  .flex.justify-end
+    = f.submit "Сохранить", class: "btn"

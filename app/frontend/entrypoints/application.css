@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/font.css";
+@import "../styles/notice.scss";
 @import "../styles/application.scss";
 
 @source "../../../app/views/**/*.html.erb";

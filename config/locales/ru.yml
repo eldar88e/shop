@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      product:
+        name: "Название"
+        price: "Цена"
+        stock_quantity: "Количество на складе"
+        image: "Картинка"

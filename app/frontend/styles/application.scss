@@ -3,8 +3,63 @@
 body {
   @apply font-sans;
   font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 
   .header {
     border-bottom: 1px solid rgba(236, 239, 244, 1);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .bg-blue {
+    background-color: #0f7bbe;
+  }
+
+  .c-blue {
+    color: #f02e36;
+  }
+
+  .empty-cart:hover {
+    @apply text-red-500;
+  }
+
+  .btn-del:hover {
+    path {
+      fill: #F02E36FF;
+    }
+  }
+
+  a:hover {
+    color: #0f7bbe;
+  }
+
+  .btn {
+    @apply px-4 py-2 bg-teal-400 text-white active:bg-teal-600 cursor-pointer border-0 outline-0 rounded-md shadow-sm;
+  }
+
+  #discount-slider {
+    @apply w-full appearance-none bg-teal-400 rounded h-1 mt-2;
+  }
+
+  #discount-slider::-webkit-slider-thumb {
+    height: 38px;
+    width: 38px;
+    @apply appearance-none bg-teal-500 rounded-full shadow-md cursor-pointer;
+  }
+
+  #discount-slider::-moz-range-thumb {
+    height: 38px;
+    width: 38px;
+    @apply bg-teal-500 rounded-full shadow-md cursor-pointer;
+  }
+
+  #discount-slider::-ms-thumb {
+    height: 38px;
+    width: 38px;
+    @apply bg-teal-500 rounded-full shadow-md cursor-pointer;
   }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) | 'Shop' %></title>
+    <title><%= (content_for(:title) ? "#{content_for(:title)} | " : '') + 'Frogogo' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -20,14 +20,17 @@
   </head>
 
   <body>
+    <%= render '/layouts/partials/notices' %>
     <header>
       <%= render '/layouts/partials/header' %>
     </header>
     <main>
-      <div class="container mx-auto max-w-3xl">
+      <div class="container mx-auto max-w-3xl sm:px-0 px-2">
         <%= yield %>
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <p class="my-10 text-gray-200 text-center text-sm leading-5">© 2023-2024 Eldar All rights reserved.</p>
+    </footer>
   </body>
 </html>

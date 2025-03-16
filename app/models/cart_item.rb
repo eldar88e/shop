@@ -2,5 +2,5 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :product
 
-  validates :quantity, numericality: { greater_than: 1 }, presence: true
+  validates :quantity, numericality: { greater_than: 0 }, presence: true
 end

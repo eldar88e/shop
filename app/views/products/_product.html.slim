@@ -1,0 +1,7 @@
+.w-1/2.sm:w-1/3.p-2 id = dom_id(product)
+  .border.rounded-sm.p-2.border-transparent.hover:border-teal-100
+    .mb-3
+      = render partial: '/products/img', locals: { product: product, height: 60 }
+    .mb-4.h-10 = product.name
+    .text-center
+      = button_to 'В корзину', cart_item_path(product), method: :patch, class: 'btn mb-3'
