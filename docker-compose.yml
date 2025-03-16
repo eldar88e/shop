@@ -13,7 +13,7 @@ services:
       - redis
     # command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
     # entrypoint: ["./bin/docker-entrypoint"]
-    command: ['sh']
+    command: ["bash", "-c", "while true; do sleep 3600; done"]
     networks:
       net:
       proxy-net:
