@@ -32,7 +32,7 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-COPY ./entrypoint.sh ./bin/entrypoint.sh
+COPY ./bin/entrypoint.sh ./bin/entrypoint.sh
 RUN chmod +x /bin/entrypoint.sh
 
 # RUN bundle exec rails assets:precompile
