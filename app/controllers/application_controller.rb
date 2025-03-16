@@ -12,15 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def error_notice(msg, status = :unprocessable_entity)
-    render turbo_stream: send_notice(msg, "danger"), status:
+    render turbo_stream: send_notice(msg, 'danger'), status:
   end
 
   def success_notice(notices)
-    send_notice(notices, "success")
+    send_notice(notices, 'success')
   end
 
   def send_notice(notices, key)
-    turbo_stream.append(:notices, partial: "/layouts/partials/notice", locals: { notices:, key: })
+    turbo_stream.append(:notices, partial: '/layouts/partials/notice', locals: { notices:, key: })
   end
 
   def create_new_cart

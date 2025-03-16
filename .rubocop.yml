@@ -11,6 +11,9 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
 # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false

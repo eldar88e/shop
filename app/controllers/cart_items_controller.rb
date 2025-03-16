@@ -7,18 +7,18 @@ class CartItemsController < ApplicationController
 
   def update
     if @cart_item
-      return @cart_item.destroy! && render(turbo_stream: success_notice("Товар успешно удален.")) if params[:quantity] == '0'
+      return @cart_item.destroy! && render(turbo_stream: success_notice('Товар успешно удален.')) if params[:quantity] == '0'
 
       @cart_item.update!(quantity: params[:quantity] || @cart_item.quantity + 1)
     else
       current_cart.cart_items.create!(product_id: params[:id])
     end
-    render turbo_stream: success_notice("Товар добавлен в корзину.")
+    render turbo_stream: success_notice('Товар добавлен в корзину.')
   end
 
   def destroy
     @cart_item.destroy!
-    redirect_to cart_items_path, flash: { notice: "Товар успешно удален." }
+    redirect_to cart_items_path, flash: { notice: 'Товар успешно удален.' }
   end
 
   private
