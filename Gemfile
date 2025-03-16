@@ -13,7 +13,9 @@ gem 'dotenv'
 gem 'slim-rails'
 gem 'rails-i18n'
 gem 'redis'
+
 gem 'stimulus_reflex'
+gem 'view_component'
 
 # gem "bcrypt", "~> 3.1.7"
 # gem "tzinfo-data", platforms: %i[ windows jruby ]
