@@ -32,6 +32,9 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # RUN bundle exec rails assets:precompile
 # RUN bundle exec bootsnap precompile app/ lib/
 # ENTRYPOINT ["/app/bin/docker-entrypoint"]
