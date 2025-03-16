@@ -16,5 +16,4 @@ test:
 
 production:
   <<: *default
-  host: <%= ENV.fetch('DB_HOST') %>
   database: store_production
