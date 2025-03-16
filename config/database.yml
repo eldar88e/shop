@@ -12,8 +12,8 @@ development:
 
 test:
   <<: *default
-  database: store_test
+  database: shop_test
 
 production:
   <<: *default
-  database: store_production
+  database: shop_production
