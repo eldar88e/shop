@@ -17,3 +17,6 @@ test:
 production:
   <<: *default
   database: shop_production
+  cable:
+    <<: *default
+    database: shop_production_cable
