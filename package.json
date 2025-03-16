@@ -13,6 +13,9 @@
     "sass-embedded": "^1.85.1",
     "tailwindcss": "^4.0.14",
     "vite": "^5.4.14",
-    "vite-plugin-rails": "^0.5.0"
+    "vite-plugin-rails": "^0.5.0",
+    "cable_ready": "5.0.6",
+    "stimulus_reflex": "3.5.3",
+    "stimulus-vite-helpers": "^3"
   }
 }

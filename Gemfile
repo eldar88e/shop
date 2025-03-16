@@ -13,6 +13,7 @@ gem 'dotenv'
 gem 'slim-rails'
 gem 'rails-i18n'
 gem 'redis'
+gem 'stimulus_reflex'
 
 # gem "bcrypt", "~> 3.1.7"
 # gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -20,9 +21,9 @@ gem 'redis'
 # gem "image_processing", "~> 1.2"
 #
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+gem 'solid_cache'
+gem 'solid_queue'
+gem 'solid_cable'
 
 gem 'kamal', require: false
 
@@ -35,3 +36,7 @@ end
 group :development do
   gem 'web-console'
 end
+
+gem 'action-cable-redis-backport', '~> 1'
+
+gem 'redis-session-store', '~> 0.11.5'
