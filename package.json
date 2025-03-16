@@ -6,6 +6,7 @@
     "@hotwired/turbo-rails": "^8.0.12",
     "@tailwindcss/vite": "^4.0.14",
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.25.1",
     "postcss": "^8.4.49",
     "sass": "^1.85.1",
     "sass-embedded": "^1.85.1",
