@@ -7,17 +7,13 @@ class CartItemsController < ApplicationController
 
   def update
     if @cart_item
-      if params[:quantity] == 'up' || params[:quantity].blank?
-        @cart_item.update!(quantity: @cart_item.quantity + 1)
-      elsif params[:quantity] == 'down'
-        return @cart_item.destroy! && render(turbo_stream: success_notice('Товар успешно удален.')) if @cart_item.quantity == 1
-
-        @cart_item.update!(quantity: @cart_item.quantity - 1)
-      end
+      @cart_item.update!(quantity: @cart_item.quantity + 1)
     else
       current_cart.cart_items.create!(product_id: params[:id])
     end
     render turbo_stream: success_notice('Товар добавлен в корзину.')
+  rescue ActiveRecord::RecordInvalid => e
+    error_notice @cart_item ? @cart_item.errors.full_messages : e.message
   end
 
   def destroy

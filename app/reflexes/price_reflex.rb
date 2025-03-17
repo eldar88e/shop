@@ -37,16 +37,24 @@ class PriceReflex < ApplicationReflex
 
   def update_price
     cart_item = CartItem.find(element.dataset[:cart_item_id])
-    handler_cart_item(cart_item)
-    cart         = cart_item.cart
-    sum_discount = Cart.where(user_id: session[:session_id]).pluck(:discount).sum
-    discount     = [[DISCOUNT - sum_discount, 0].max, cart.total_price].min
-    result       = render(CartPriceComponent.new(cart.cart_items, discount, cart.total_price, cart), layout: false)
-    count        = render(CountCartItemComponent.new(cart_item), layout: false)
-    morph "#count_block_#{cart_item.id}", count
-    morph '#price_block', result
-    notice = render(NoticeComponent.new('Товар добавлен в корзину.', 'success'), layout: false)
-    cable_ready.append(selector: '#notices', html: notice).broadcast
+    result    = handler_cart_item(cart_item)
+    if result.is_a? Array
+      result.each do |error|
+        notice = render(NoticeComponent.new(error, 'danger'), layout: false)
+        cable_ready.append(selector: '#notices', html: notice).broadcast
+      end
+    else
+      cart         = cart_item.cart
+      sum_discount = Cart.where(user_id: session[:session_id]).pluck(:discount).sum
+      discount     = [[DISCOUNT - sum_discount, 0].max, cart.total_price].min
+      result       = render(CartPriceComponent.new(cart.cart_items, discount, cart.total_price, cart), layout: false)
+      count        = render(CountCartItemComponent.new(cart_item), layout: false)
+      morph "#count_block_#{cart_item.id}", count
+      morph '#price_block', result
+      msg = cart_item.destroyed? ? 'Товар успешно удален' : "Количество товара в корзине успешно изменено #{cart_item.quantity}"
+      notice = render(NoticeComponent.new(msg, 'success'), layout: false)
+      cable_ready.append(selector: '#notices', html: notice).broadcast
+    end
   end
 
   private
@@ -54,9 +62,17 @@ class PriceReflex < ApplicationReflex
   def handler_cart_item(cart_item)
     quantity  = element.dataset[:up] ? cart_item.quantity + 1 : cart_item.quantity - 1
     if cart_item.quantity > 1
-      cart_item.update(quantity: quantity)
+      if cart_item.update(quantity: quantity)
+      else
+        cart_item.errors.full_messages
+      end
     else
-      element.dataset[:up] ? cart_item.update(quantity: quantity) : cart_item.destroy
+      if element.dataset[:up]
+        cart_item.update(quantity: quantity)
+      else
+        cart_item.destroy
+        cable_ready.remove(selector: cart_item)
+      end
     end
   end
 end

@@ -6,3 +6,5 @@ ru:
         price: "Цена"
         stock_quantity: "Количество на складе"
         image: "Картинка"
+      cart_item:
+        quantity: "Количество"
