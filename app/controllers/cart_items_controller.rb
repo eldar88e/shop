@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item
 
   def index
-    @cart_items = current_cart.cart_items
+    @cart_items = current_cart.cart_items.includes(product: :image_attachment)
   end
 
   def update
