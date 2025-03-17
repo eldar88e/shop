@@ -1,6 +1,14 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.session_store :redis_session_store,
+                       serializer: :json,
+                       on_redis_down: ->(*a) { Rails.logger.error("Redis down! #{a.inspect}") },
+                       redis: {
+                         expire_after: 120.minutes,
+                         key_prefix: 'session:',
+                         url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/1')
+                       }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
