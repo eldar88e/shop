@@ -85,6 +85,9 @@ GEM
     brakeman (7.0.0)
       racc
     builder (3.3.0)
+    bullet (8.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     cable_ready (5.0.6)
       actionpack (>= 5.2)
       actionview (>= 5.2)
@@ -337,6 +340,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uniform_notifier (1.16.0)
     uri (1.0.3)
     useragent (0.16.11)
     view_component (3.21.0)
@@ -374,6 +378,7 @@ DEPENDENCIES
   action-cable-redis-backport (~> 1)
   bootsnap
   brakeman
+  bullet
   dotenv
   jbuilder
   kamal

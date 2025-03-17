@@ -31,6 +31,7 @@ gem 'kamal', require: false
 
 group :development, :test do
   gem 'pry'
+  gem 'bullet'
   gem 'brakeman', require: false
   gem 'rubocop-rails-omakase', require: false
 end
