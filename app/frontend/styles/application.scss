@@ -1,3 +1,6 @@
+$primary-color: #10cdb7;
+$secondary-color: #0f7bbe;
+
 @import "tailwindcss";
 
 body {
@@ -15,14 +18,6 @@ body {
     cursor: pointer;
   }
 
-  .bg-blue {
-    background-color: #0f7bbe;
-  }
-
-  .c-blue {
-    color: #f02e36;
-  }
-
   .empty-cart:hover {
     @apply text-red-500;
   }
@@ -34,37 +29,54 @@ body {
   }
 
   a:hover {
-    color: #0f7bbe;
+    color: $secondary-color;
   }
 
   .btn {
     @apply px-4 py-2 bg-teal-400 text-white active:bg-teal-600 cursor-pointer border-0 outline-0 rounded-md;
   }
 
-  #discount-slider {
-    @apply w-full appearance-none bg-teal-400 rounded h-1 mt-2;
-  }
-
-  #discount-slider::-webkit-slider-thumb {
-    height: 38px;
-    width: 38px;
-    @apply appearance-none bg-teal-500 rounded-full shadow-md cursor-pointer;
-  }
-
-  #discount-slider::-moz-range-thumb {
-    height: 38px;
-    width: 38px;
-    @apply bg-teal-500 rounded-full shadow-md cursor-pointer;
-  }
-
-  #discount-slider::-ms-thumb {
-    height: 38px;
-    width: 38px;
-    @apply bg-teal-500 rounded-full shadow-md cursor-pointer;
+  label {
+    --l: 4px;  /* line thickness*/
+    --s: 38px; /* thumb size*/
+    timeline-scope: --thumb-view;
+    position: relative;
   }
 
   input[type="range"] {
-    width: 100%;
-    @apply border border-teal-400 bg-teal-500 h-1;
+    @apply w-full;
+    height: var(--s); /* needed for Firefox*/
+    --_c: color-mix(in srgb, #10cdb7, #0a9185 0%);
+    appearance :none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .3s;
+  }
+  /* chromium */
+  input[type="range" i]::-webkit-slider-thumb{
+    height: var(--s);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow: 0 0 0 var(var(--l)) inset var(--_c);
+    border-image: linear-gradient(90deg,var(--_c) 50%, #dedede 0) 0 1/calc(50% - var(--l)/2) 100vw/0 100vw;
+    -webkit-appearance: none;
+    background: #10cdb7;
+    appearance: none;
+    anchor-name: --thumb;
+    view-timeline: --thumb-view inline;
+  }
+  /* Firefox */
+  input[type="range"]::-moz-range-thumb {
+    height: 36px;
+    width: var(--s);
+    border-radius: 50%;
+    box-shadow: 0 0 0 var(var(--l)) inset var(--_c);
+    border-image: linear-gradient(90deg,var(--_c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 100vw;
+    -moz-appearance: none;
+    background: #10cdb7;
+    appearance: none;
+    anchor-name: --thumb;
+    view-timeline: --thumb-view inline;
   }
 }
