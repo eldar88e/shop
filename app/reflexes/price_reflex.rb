@@ -39,21 +39,17 @@ class PriceReflex < ApplicationReflex
     cart_item = CartItem.find(element.dataset[:cart_item_id])
     result    = handler_cart_item(cart_item)
     if result.is_a? Array
-      result.each do |error|
-        notice = render(NoticeComponent.new(error, 'danger'), layout: false)
-        cable_ready.append(selector: '#notices', html: notice).broadcast
-      end
+      notice = render(NoticeComponent.new(result, 'error'), layout: false)
+      cable_ready.append(selector: '#notices', html: notice)
     else
-      cart         = cart_item.cart
-      sum_discount = Cart.where(user_id: session[:session_id]).pluck(:discount).sum
-      discount     = [[DISCOUNT - sum_discount, 0].max, cart.total_price].min
-      result       = render(CartPriceComponent.new(cart.cart_items, discount, cart.total_price, cart), layout: false)
-      count        = render(CountCartItemComponent.new(cart_item), layout: false)
+      cart   = cart_item.cart
+      count  = render(CountCartItemComponent.new(cart_item), layout: false)
+      result = render(CountPriceItemsComponent.new(cart.cart_items, cart), layout: false)
       morph "#count_block_#{cart_item.id}", count
-      morph '#price_block', result
-      msg = cart_item.destroyed? ? 'Товар успешно удален' : "Количество товара в корзине успешно изменено #{cart_item.quantity}"
+      morph '#count-price-item', result
+      msg = cart_item.destroyed? ? 'Товар успешно удален' : "Количество товара в корзине изменено #{cart_item.quantity}"
       notice = render(NoticeComponent.new(msg, 'success'), layout: false)
-      cable_ready.append(selector: '#notices', html: notice).broadcast
+      cable_ready.append(selector: '#notices', html: notice)
     end
   end
 

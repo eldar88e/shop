@@ -1,0 +1,6 @@
+.text-xs.leading-tight.flex.justify-center.gap-1
+  = @cart_items.sum(&:quantity)
+  span товара на сумму
+.flex.gap-1.text-base.font-semibold.leading-6.text-black
+  div data-discount-target="totalPrice" = @cart.total_price
+  span style="font-family: system-ui;" ₽
