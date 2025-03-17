@@ -7,7 +7,7 @@ Rails.application.configure do
                        redis: {
                          expire_after: 120.minutes,
                          key_prefix: 'session:',
-                         url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/1')
+                         url: ENV.fetch('REDIS_URL')
                        }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -57,7 +57,7 @@ Rails.application.configure do
   # Replace the default in-process memory cache store with a durable alternative.
   # config.cache_store = :solid_cache_store
   config.cache_store = :redis_cache_store, {
-    url: ENV.fetch('REDIS_URL') { 'redis://localhost:6379/1' },
+    url: ENV.fetch('REDIS_URL'),
     namespace: 'cache',
     expires_in: 2.hours
   }
