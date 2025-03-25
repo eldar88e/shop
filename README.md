@@ -33,7 +33,12 @@ This is a test e-commerce project built with Ruby on Rails. Below are the necess
    rails db:prepare
    ```
 
-5. Start the development server:
+5. Precompile assets:
+    ```sh
+    yarn vite build
+    ```
+
+6. Start the development server:
    ```sh
    rails server
    ```

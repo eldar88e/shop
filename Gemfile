@@ -7,13 +7,14 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'jbuilder'
 gem 'bootsnap', require: false
+
 gem 'vite_rails'
 gem 'pg'
 gem 'dotenv'
-gem 'slim-rails'
 gem 'rails-i18n'
 gem 'redis'
 
+gem 'slim-rails'
 gem 'stimulus_reflex'
 gem 'view_component'
 
@@ -23,11 +24,11 @@ gem 'view_component'
 # gem "image_processing", "~> 1.2"
 #
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem 'solid_cache'
-gem 'solid_queue'
-gem 'solid_cable'
+# gem 'solid_cache'
+# gem 'solid_queue'
+# gem 'solid_cable'
 
-gem 'kamal', require: false
+# gem 'kamal', require: false
 
 group :development, :test do
   gem 'pry'
@@ -39,7 +40,3 @@ end
 group :development do
   gem 'web-console'
 end
-
-gem 'action-cable-redis-backport', '~> 1'
-
-gem 'redis-session-store', '~> 0.11.5'
