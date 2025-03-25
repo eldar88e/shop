@@ -40,3 +40,6 @@ end
 group :development do
   gem 'web-console'
 end
+
+gem 'action-cable-redis-backport', '~> 1'
+gem 'redis-session-store', '~> 0.11.5'
