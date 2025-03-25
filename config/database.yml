@@ -17,7 +17,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: shop_production
+    database: <%= ENV.fetch('DB_NAME', 'shop_production') %>
   cache:
     <<: *primary_production
     database: shop_production_cache
