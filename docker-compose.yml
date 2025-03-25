@@ -8,14 +8,10 @@ services:
       - .:/app
     container_name: shop
     hostname: shop
-    ports:
-      - "3000:3000"
     depends_on:
       - pg
       - redis
-    # command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
     entrypoint: ["./bin/docker-entrypoint"]
-    # command: ["bash", "-c", "while true; do sleep 3600; done"]
     networks:
       net:
       proxy-net:
