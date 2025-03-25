@@ -48,7 +48,9 @@ class ExampleReflex < ApplicationReflex
     cable_ready.set_value(selector: 'progress', value: session[:count])
 
     if session[:count] == 5
-      cable_ready.text_content(selector: '#reload', text: 'Try reloading your browser window. The count is persisted in the session!')
+      cable_ready.text_content(
+        selector: '#reload', text: 'Try reloading your browser window. The count is persisted in the session!'
+      )
     end
 
     if session[:count] >= 10
