@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @import "../styles/font.css";
 @import "../styles/notice.scss";
 @import "../styles/application.scss";
@@ -8,4 +9,4 @@
 @source "../../../app/views/**/*.html.slim";
 @source "../../../app/views/**/*.rb";
 @source "../../../app/helpers/**/*.rb";
-@source "../javascript/**/*.js"
+@source "../../../app/frontend/javascript/**/*.js"

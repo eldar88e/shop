@@ -48,7 +48,7 @@ body {
     background: none;
     cursor: pointer;
     overflow: hidden;
-    transition: .3s;
+    transition: all .3s;
   }
   /* chromium */
   input[type="range" i]::-webkit-slider-thumb{

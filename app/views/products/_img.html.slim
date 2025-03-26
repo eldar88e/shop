@@ -1,5 +1,5 @@
 - if product.image.attached?
-  = image_tag url_for(product.image), style: "margin: 0 auto; width: 100px; height: 100px;"
+  = image_tag url_for(product.image), alt: "#{product.name}", loading: 'lazy', style: "margin: 0 auto; width: 100px; height: 100px;"
 - else
   .flex.justify-center.items-center style="margin: 0 auto; width: 100px; height: 100px;"
     svg class="w-18 h-18" style="color: #0f7bbe;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"
