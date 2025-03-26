@@ -3,9 +3,9 @@
     .mb-3
       = render partial: '/products/img', locals: { product: product, height: 60 }
     .mb-4.h-10.product-title title="#{product.name}" = product.name
-    .flex.justify-between.items-center.mb-4
+    .sm:flex.justify-between.items-center.mb-4.block
       .text-center
         = button_to 'В корзину', cart_item_path(product), method: :patch, class: 'btn', title: 'Добавить в корзину'
-      .h-10.flex.items-center.gap-1
+      .h-10.flex.items-center.gap-1.justify-center.mt-4.sm:mt-0.font-bold
         span = product.price
         span style="font-family: system-ui;" ₽
