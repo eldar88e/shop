@@ -1,6 +1,9 @@
 {
   "name": "shop",
   "private": true,
+  "browserslist": [
+    "cover 99.5%"
+  ],
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.12",
