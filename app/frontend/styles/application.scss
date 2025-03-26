@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 body {
-  @apply font-sans;
-  font-family: "Open Sans";
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -75,5 +74,13 @@ body {
     appearance: none;
     anchor-name: --thumb;
     view-timeline: --thumb-view inline;
+  }
+
+  .product-title {
+    max-height: calc(var(--spacing)* 10);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }

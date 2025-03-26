@@ -3,7 +3,7 @@
 .flex.justify-between.items-center.mb-8
   h1.font-semibold.text-2xl.leading-10.tracking-norma = content_for(:title)
   - if @cart_items.present?
-    = button_to 'Очистить корзину', cart_path(current_cart), method: :delete, class: 'font-normal text-sm leading-5 text-gray-400 empty-cart'
+    = button_to 'Очистить корзину', cart_path(current_cart), method: :delete, title: 'Очистить полностью корзину', class: 'font-normal text-sm leading-5 text-gray-400 empty-cart'
 
 - if @cart_items.present?
   ul.mb-8 = render @cart_items

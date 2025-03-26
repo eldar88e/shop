@@ -2,10 +2,10 @@
   .border.rounded-sm.p-2.border-transparent.hover:border-teal-200
     .mb-3
       = render partial: '/products/img', locals: { product: product, height: 60 }
-    .mb-4.h-10 = product.name
+    .mb-4.h-10.product-title title="#{product.name}" = product.name
     .flex.justify-between.items-center.mb-4
       .text-center
-        = button_to 'В корзину', cart_item_path(product), method: :patch, class: 'btn'
+        = button_to 'В корзину', cart_item_path(product), method: :patch, class: 'btn', title: 'Добавить в корзину'
       .h-10.flex.items-center.gap-1
         span = product.price
         span style="font-family: system-ui;" ₽

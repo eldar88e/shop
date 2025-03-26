@@ -17,4 +17,4 @@
     .flex.gap-1.text-xl.font-bold.leading-8
       span data-discount-target="finalPrice" = @cart.total_price - @discount
       div style="font-family: system-ui;" ₽
-= button_to 'Оформить', cart_path(@cart), params: { discount: @discount }, method: :patch, class: 'btn w-full'
+= button_to 'Оформить', cart_path(@cart), params: { discount: @discount }, method: :patch, class: 'btn w-full', title: 'Оформить заказ'
